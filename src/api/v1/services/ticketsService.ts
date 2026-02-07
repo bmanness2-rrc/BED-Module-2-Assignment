@@ -18,3 +18,20 @@ export const getTicketById = (id: number): Ticket | null => {
     return ticket || null;
 };
 
+export const createTicket = (
+  title: string,
+  description: string,
+  priority: string
+): Ticket => {
+  const newTicket: Ticket = {
+    id: tickets.length ? tickets[tickets.length - 1].id + 1 : 1,
+    title,
+    description,
+    priority,
+    status: "open",
+    createdAt: new Date().toISOString(),
+  };
+
+  tickets.push(newTicket);
+  return newTicket;
+};
