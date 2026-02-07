@@ -1,4 +1,4 @@
-import { Ticket } from "../api/v1/services/ticketService"
+import { Ticket } from "../api/v1/services/ticketsService"
 
 const daysAgo = (days: number): string => {
   const date = new Date();
