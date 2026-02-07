@@ -8,3 +8,8 @@ export interface  Ticket {
     status: string;
     createdAt: string
 }
+
+export const getAllTickets = (): Ticket[] => {
+    return tickets
+};
+
