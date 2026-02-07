@@ -39,7 +39,7 @@ export const getUrgencyLevel = (
     return "Critical. Immediate attention required.";
   }
 
-  if (urgencyScore >= 50) {
+  if (urgencyScore > 50) {
     return "High urgency. Prioritize resolution.";
   }
 
