@@ -68,3 +68,51 @@ export const createTicketController = (req: Request, res: Response) => {
     data: newTicket,
   });
 };
+
+export const updateTicketController = (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const { priority, status, title, description } = req.body;
+
+  if (
+    priority &&
+    priority !== "critical" &&
+    priority !== "high" &&
+    priority !== "medium" &&
+    priority !== "low"
+  ) {
+    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+      message:
+        "Invalid priority. Must be one of: critical, high, medium, low",
+    });
+  }
+
+  if (
+    status &&
+    status !== "open" &&
+    status !== "in-progress" &&
+    status !== "resolved"
+  ) {
+    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+      message:
+        "Invalid status. Must be one of: open, in-progress, resolved",
+    });
+  }
+
+  const updatedTicket = updateTicket(id, {
+    title,
+    description,
+    priority,
+    status,
+  });
+
+  if (!updatedTicket) {
+    return res.status(HTTP_STATUS.NOT_FOUND).json({
+      message: "Ticket not found",
+    });
+  }
+
+  res.status(HTTP_STATUS.OK).json({
+    message: "Ticket updated",
+    data: updatedTicket,
+  });
+};
