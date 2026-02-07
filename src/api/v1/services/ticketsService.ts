@@ -1,4 +1,4 @@
-import { tickets } from "src/data/tickets";
+import { tickets } from "../../../data/tickets";
 
 export interface  Ticket {
     id: number;
