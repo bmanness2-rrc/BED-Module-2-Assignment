@@ -13,3 +13,8 @@ export const getAllTickets = (): Ticket[] => {
     return tickets
 };
 
+export const getTicketById = (id: number): Ticket | null => {
+    const ticket = tickets.find((x) => x.id === id);
+    return ticket || null;
+};
+
