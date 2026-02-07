@@ -49,3 +49,14 @@ export const updateTicket = (
   Object.assign(ticket, updates);
   return ticket;
 };
+
+export const deleteTicket = (id: number): boolean => {
+  const index = tickets.findIndex((x) => x.id === id);
+
+  if (index === -1) {
+    return false;
+  }
+
+  tickets.splice(index, 1);
+  return true;
+};
