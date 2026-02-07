@@ -7,7 +7,7 @@ export interface  Ticket {
     priority: string;
     status: string;
     createdAt: string
-}
+};
 
 export const getAllTickets = (): Ticket[] => {
     return tickets
