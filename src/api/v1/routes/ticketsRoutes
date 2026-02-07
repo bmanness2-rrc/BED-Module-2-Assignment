@@ -1,0 +1,18 @@
+import { Router } from "express";
+import {
+    getAllTicketsController,
+    getTicketByIdController,
+    createTicketController,
+    updateTicketController,
+    deleteTicketController
+} from "../controllers/ticketsController";
+
+const router = Router();
+
+router.get("/tickets", getAllTicketsController);
+router.get("/ticket/:id", getTicketByIdController);
+router.post("/tickets", createTicketController);
+router.put("/tickets/:id", updateTicketController);
+router.delete("/tickets/:id", deleteTicketController);
+
+export default router;
