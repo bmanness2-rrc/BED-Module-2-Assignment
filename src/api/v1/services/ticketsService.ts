@@ -35,3 +35,17 @@ export const createTicket = (
   tickets.push(newTicket);
   return newTicket;
 };
+
+export const updateTicket = (
+  id: number,
+  updates: Partial<Omit<Ticket, "id" | "createdAt">>
+): Ticket | null => {
+  const ticket = tickets.find((x) => x.id === id);
+
+  if (!ticket) {
+    return null;
+  }
+
+  Object.assign(ticket, updates);
+  return ticket;
+};
