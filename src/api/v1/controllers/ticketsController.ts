@@ -23,9 +23,10 @@ export const getTicketByIdController = (req: Request, res: Response) => {
   const ticket = getTicketById(id);
 
   if (!ticket) {
-    return res.status(HTTP_STATUS.NOT_FOUND).json({
+    res.status(HTTP_STATUS.NOT_FOUND).json({
       message: "Ticket not found",
     });
+    return;
   }
 
   res.status(HTTP_STATUS.OK).json({
@@ -38,15 +39,17 @@ export const createTicketController = (req: Request, res: Response) => {
   const { title, description, priority } = req.body;
 
   if (!title) {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
       message: "Missing required field: title",
     });
+    return;
   }
 
   if (!description) {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
       message: "Missing required field: description",
     });
+    return;
   }
 
   if (
@@ -55,10 +58,11 @@ export const createTicketController = (req: Request, res: Response) => {
     priority !== "medium" &&
     priority !== "low"
   ) {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
       message:
         "Invalid priority. Must be one of: critical, high, medium, low",
     });
+    return;
   }
 
   const newTicket = createTicket(title, description, priority);
@@ -80,10 +84,11 @@ export const updateTicketController = (req: Request, res: Response) => {
     priority !== "medium" &&
     priority !== "low"
   ) {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
       message:
         "Invalid priority. Must be one of: critical, high, medium, low",
     });
+    return;
   }
 
   if (
@@ -92,10 +97,11 @@ export const updateTicketController = (req: Request, res: Response) => {
     status !== "in-progress" &&
     status !== "resolved"
   ) {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
       message:
         "Invalid status. Must be one of: open, in-progress, resolved",
     });
+    return;
   }
 
   const updatedTicket = updateTicket(id, {
@@ -106,9 +112,10 @@ export const updateTicketController = (req: Request, res: Response) => {
   });
 
   if (!updatedTicket) {
-    return res.status(HTTP_STATUS.NOT_FOUND).json({
+    res.status(HTTP_STATUS.NOT_FOUND).json({
       message: "Ticket not found",
     });
+    return;
   }
 
   res.status(HTTP_STATUS.OK).json({
@@ -122,9 +129,10 @@ export const deleteTicketController = (req: Request, res: Response) => {
   const deleted = deleteTicket(id);
 
   if (!deleted) {
-    return res.status(HTTP_STATUS.NOT_FOUND).json({
+    res.status(HTTP_STATUS.NOT_FOUND).json({
       message: "Ticket not found",
     });
+    return;
   }
 
   res.status(HTTP_STATUS.OK).json({
