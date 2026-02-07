@@ -1,3 +1,5 @@
+import { tickets } from "src/data/tickets";
+
 export interface  Ticket {
     id: number;
     title: string;
