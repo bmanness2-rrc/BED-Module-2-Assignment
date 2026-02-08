@@ -3,6 +3,7 @@ import { Ticket } from "../api/v1/services/ticketsService";
 const daysAgo = (days: number): string => {
   const date = new Date();
   date.setDate(date.getDate() - days);
+  date.setUTCHours(15, 0, 0, 0);
   return date.toISOString();
 };
 
