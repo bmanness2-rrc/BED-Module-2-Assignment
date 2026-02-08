@@ -36,7 +36,8 @@ export const getTicketByIdController = (req: Request, res: Response) => {
 };
 
 export const createTicketController = (req: Request, res: Response) => {
-  const { title, description, priority } = req.body;
+  const body = req.body || {};
+  const { title, description, priority } = body;
 
   if (!title) {
     res.status(HTTP_STATUS.BAD_REQUEST).json({
