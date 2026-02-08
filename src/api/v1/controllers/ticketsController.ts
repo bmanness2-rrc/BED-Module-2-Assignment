@@ -76,7 +76,8 @@ export const createTicketController = (req: Request, res: Response) => {
 
 export const updateTicketController = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-  const { priority, status, title, description } = req.body;
+  const body = req.body || {};
+  const { priority, status, title, description } = body;
 
   if (
     priority &&
