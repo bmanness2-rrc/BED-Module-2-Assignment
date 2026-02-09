@@ -56,4 +56,26 @@ describe("Urgency Service Functions", () => {
       expect(score).toBe(0);
     });
   });
+
+  describe("getUrgencyLevel", () => {
+    it("should return Critical level for score >= 75", () => {
+      // Arrange
+      const score = 80;
+      const status = "open";
+      // Act
+      const level = getUrgencyLevel(score, status);
+      // Assert
+      expect(level).toBe("Critical. Immediate attention required.");
+    });
+
+    it("should return Minimal for resolved ticket regardless of score", () => {
+      // Arrange
+      const score = 100;
+      const status = "resolved";
+      // Act
+      const level = getUrgencyLevel(score, status);
+      // Assert
+      expect(level).toBe("Minimal. Ticket resolved.");
+    });
+  });
 });
