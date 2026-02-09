@@ -14,3 +14,10 @@ jest.mock("../src/api/v1/controllers/ticketsController", () => ({
 jest.mock("../src/api/v1/controllers/urgencyController", () => ({
   getTicketUrgencyController: jest.fn((req, res) => res.status(200).send()),
 }));
+
+describe("Ticket API Endpoints", () => {
+     it("should call getAllTicketsController", async () => {
+    await request(app).get("/api/v1/tickets");
+    expect(ticketControllers.getAllTicketsController).toHaveBeenCalled();
+  });
+})
