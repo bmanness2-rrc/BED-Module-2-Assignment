@@ -12,7 +12,7 @@ export const calculateTicketAge = (createdAt: string): number => {
   const now = Date.now();
 
   const diffInMs = now - createdDate;
-  return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+  return Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 };
 
 export const calculateUrgencyScore = (
