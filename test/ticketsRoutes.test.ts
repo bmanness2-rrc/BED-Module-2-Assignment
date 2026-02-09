@@ -9,3 +9,24 @@ app.use(express.json());
 app.use("/api/v1", ticketsRouter);
 
 jest.mock("../src/api/v1/services/ticketsService");
+
+describe("Ticket Routes", () => {
+    const mockTickets = [
+    {
+      id: 1,
+      title: "Test Ticket 1",
+      description: "Desc 1",
+      priority: "low",
+      status: "open",
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 2,
+      title: "Test Ticket 2",
+      description: "Desc 2",
+      priority: "medium",
+      status: "open",
+      createdAt: new Date().toISOString(),
+    },
+  ];
+});
