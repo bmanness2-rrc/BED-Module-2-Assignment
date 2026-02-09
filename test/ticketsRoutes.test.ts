@@ -45,4 +45,9 @@ describe("Ticket API Endpoints", () => {
         await request(app).delete("/api/v1/tickets/1");
         expect(ticketControllers.deleteTicketController).toHaveBeenCalled();
     });
+
+    it("should call getTicketUrgencyController", async () => {
+        await request(app).get("/api/v1/tickets/1/urgency");
+        expect(urgencyController.getTicketUrgencyController).toHaveBeenCalled();
+    });
 })
